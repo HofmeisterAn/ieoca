@@ -1,0 +1,58 @@
+buildscript {
+  repositories { jcenter() }
+  dependencies { classpath "com.diffplug.spotless:spotless-plugin-gradle:${project.'spotless.version'}" }
+}
+
+allprojects {
+  apply plugin: 'java'
+  apply plugin: 'com.diffplug.gradle.spotless'
+
+  sourceSets {
+    main {
+      java { srcDirs += 'src/main/java' }
+      resources { srcDirs += 'src/main/resources' }
+    }
+    test {
+      java { srcDirs += 'src/test/java' }
+      resources { srcDirs += 'src/test/resources' }
+    }
+  }
+
+  sourceCompatibility = 1.8
+  targetCompatibility = 1.8
+
+  repositories { jcenter() }
+
+  spotless {
+    groovyGradle {
+      target '*.gradle'
+      greclipse()
+      indentWithSpaces(2)
+      endWithNewline()
+      paddedCell()
+    }
+    java { googleJavaFormat() }
+  }
+}
+
+[
+  ':main',
+  ':components:algorithm:aco',
+  ':components:algorithm:ga',
+  ':components:problem:tsp',
+  ':components:problem:tsp-view'
+].each {
+  project(it) {
+    dependencies { compile project(':component') }
+  }
+}
+
+[
+  ':components:algorithm:aco',
+  ':components:algorithm:ga',
+  ':components:problem:tsp-view'
+].each {
+  project(it) {
+    dependencies { compile project(':components:problem:tsp') }
+  }
+}

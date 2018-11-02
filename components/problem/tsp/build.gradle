@@ -1,0 +1,7 @@
+// This is a bad workaround, resolve the circular dependency and apply a proper architecture.
+sourceSets {
+  main {
+    java { srcDirs += '../tsp-view/src/main/java' }
+    resources { srcDirs += '../tsp-view/src/main/resources' }
+  }
+}

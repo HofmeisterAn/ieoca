@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN">
+    <appenders>
+        <Console name="stdout" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-mm-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        </Console>
+        <File name="AntColonyOptimization" fileName="AntColonyOptimization.log">
+            <PatternLayout pattern="%d{yyyy-mm-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        </File>
+        <File name="GeneticAlgorithm" fileName="GeneticAlgorithm.log">
+            <PatternLayout pattern="%d{yyyy-mm-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        </File>
+    </appenders>
+    <loggers>
+        <Logger name="com.ieoca.algorithm.aco.AntColonyOptimization" level="info">
+            <!-- <appender-ref ref="stdout"/> -->
+            <appender-ref ref="AntColonyOptimization" level="info" />
+        </Logger>
+        <Logger name="com.ieoca.algorithm.ga.GeneticAlgorithm" level="info">
+            <!-- <appender-ref ref="stdout"/> -->
+        <appender-ref ref="GeneticAlgorithm" level="info" />
+        </Logger>
+    </loggers>
+</configuration>

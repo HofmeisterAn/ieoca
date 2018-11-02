@@ -1,0 +1,1 @@
+include ":main", ":component", ":components:algorithm:aco", ":components:algorithm:ga", ":components:problem:tsp", ":components:problem:tsp-view"
